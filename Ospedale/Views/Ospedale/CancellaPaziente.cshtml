@@ -1,0 +1,58 @@
+﻿@model Ospedale.Models.Paziente
+
+@{
+    ViewBag.Title = "CancellaPaziente";
+}
+
+
+<center>
+    <div class="card CardGenerica w-50 mt-5">
+        <h3 class="mt-3 my-3">Eliminare il paziente: </h3>
+        <dl class="dl-horizontal">
+            @if (ViewBag.Errore != null)
+            {
+                <div class="alert alert-danger mt-3 w-50">
+                    @ViewBag.Errore
+                </div>
+            }
+            <dt class="mt-2">
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Cognome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cognome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CodiceFiscale)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CodiceFiscale)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DataNascita)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DataNascita)
+            </dd>
+
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p class="alert alert-danger w-50">Sei sicuro di voler eliminare il paziente? la eliminazione sarà definitiva</p>
+            <input type="submit" value="Cancella Paziente" class="btn btn-danger mb-3" />
+        }
+    </div>
+</center>

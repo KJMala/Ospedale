@@ -1,0 +1,124 @@
+﻿@model Ospedale.Models.Visita
+
+@{
+    ViewBag.Title = "CancellaVisita";
+}
+
+
+
+<center>
+    <div class="card CardGenerica w-50 mt-5">
+        <h3 class="mt-3 my-3">Eliminare la visita: </h3>
+        <dl class="form-horizontal">
+            @if (ViewBag.Errore != null)
+            {
+                <div class="alert alert-danger mt-3 w-50">
+                    @ViewBag.Errore
+                </div>
+            }
+            <dt>
+                Medico @Html.DisplayNameFor(model => model.Medico.Cognome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Medico.Cognome)
+            </dd>
+
+            <dt>
+                Paziente @Html.DisplayNameFor(model => model.Paziente.CodiceFiscale)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Paziente.CodiceFiscale)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Reparto.NomeReparto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Reparto.NomeReparto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DataVisita)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DataVisita)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StatoPaziente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StatoPaziente)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PressioneMinima)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PressioneMinima)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PressioneMassima)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PressioneMassima)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Temperatura)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Temperatura)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FrequenzaCardiaca)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FrequenzaCardiaca)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NomeVisita)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NomeVisita)
+            </dd>
+
+            <dt class="mt-2">
+                @Html.DisplayNameFor(model => model.Farmaco.NomeFarmaco)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Farmaco.NomeFarmaco)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Posologia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Posologia)
+            </dd>
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p class="alert alert-danger w-50">Sei sicuro di voler eliminare la visita? la eliminazione sarà definitiva</p>
+            <input type="submit" value="Cancella Visita" class="btn btn-danger mb-3" />
+        }
+    </div>
+       
+</center>
+

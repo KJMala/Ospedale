@@ -1,0 +1,68 @@
+﻿@model Ospedale.Models.Paziente
+
+@{
+    ViewBag.Title = "ModificaPaziente";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <center>
+        <div class="card CardGenerica w-50 mt-5">
+            <h3 class="mt-3 my-3">Modifica Paziente</h3>
+            
+            <div class="form-horizontal">
+                @if (ViewBag.Errore != null)
+                {
+                    <div class="alert alert-danger mt-3 w-50">
+                        @ViewBag.Errore
+                    </div>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.IdPaziente)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cognome, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cognome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cognome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CodiceFiscale, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CodiceFiscale, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CodiceFiscale, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataNascita, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DataNascita, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.DataNascita, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Modifica" class="btn bottone mt-3 my-3" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

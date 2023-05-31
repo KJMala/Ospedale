@@ -1,0 +1,122 @@
+﻿@model Ospedale.Models.Visita
+
+@{
+    ViewBag.Title = "CreaVisita";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <center>
+        <div class="card CardGenerica w-50 mt-5">
+            <h3 class="mt-3 my-3">Crea Nuova Visita</h3>
+            
+            <div class="form-horizontal">
+                @if (ViewBag.Errore != null)
+                {
+                    <div class="alert alert-danger mt-3 w-50">
+                        @ViewBag.Errore
+                    </div>
+                }
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.IdMedico, "Cognome Medico", htmlAttributes: new { @class = "control-label my-1" })
+                        @Html.DropDownList("IdMedico", new SelectList(ViewBag.ListaMedico, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdMedico, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.IdReparto, "Nome Reparto", htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.DropDownList("IdReparto", new SelectList(ViewBag.ListaReparto, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdReparto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.IdPaziente, "CF Paziente", htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.DropDownList("IdPaziente", new SelectList(ViewBag.ListaPaziente, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdPaziente, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.DataVisita, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.EditorFor(model => model.DataVisita, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.DataVisita, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.StatoPaziente, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.EditorFor(model => model.StatoPaziente, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StatoPaziente, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.PressioneMinima, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.EditorFor(model => model.PressioneMinima, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PressioneMinima, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.PressioneMassima, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.EditorFor(model => model.PressioneMassima, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PressioneMassima, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.Temperatura, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.EditorFor(model => model.Temperatura, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Temperatura, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.FrequenzaCardiaca, htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.EditorFor(model => model.FrequenzaCardiaca, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FrequenzaCardiaca, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.IdFarmaco, "Nome Farmaco", htmlAttributes: new { @class = "control-label mt-1 my-1" })
+                        @Html.DropDownList("IdFarmaco", new SelectList(ViewBag.ListaFarmaco, "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.IdFarmaco, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.NomeVisita, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NomeVisita, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NomeVisita, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-6">
+                        @Html.LabelFor(model => model.Posologia, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Posologia, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Posologia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row align-content-center">
+                    <div class="col-md-offset-2 col-md-10 ms-4">
+                        <input type="submit" value="Crea" class="btn bottone mt-3 my-3 ms-5" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

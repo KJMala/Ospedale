@@ -1,0 +1,63 @@
+﻿@model Ospedale.Models.Farmaco
+
+@{
+    ViewBag.Title = "CancellaFarmaco";
+}
+
+
+<center>
+    <div class="card CardGenerica w-50 mt-5">
+        <h3 class="mt-3 my-3">Eliminare il farmaco: </h3>
+
+        <div class="form-horizontal">
+            <dl class="dl-horizontal">
+                @if (ViewBag.Errore != null)
+                {
+                    <div class="alert alert-danger mt-3 w-50">
+                        @ViewBag.Errore
+                    </div>
+                }
+                <dt class="my-1">
+                    Nome Farmaco
+                </dt>
+
+                <dd class="my-1">
+                    @Html.DisplayFor(model => model.NomeFarmaco)
+                </dd>
+
+                <dt class="my-1">
+                    Quantità
+                </dt>
+
+                <dd class="my-1">
+                    @Html.DisplayFor(model => model.Quantià)
+                </dd>
+
+                <dt class="my-1">
+                    Reparto
+                </dt>
+
+                <dd class="my-1">
+                    @Html.DisplayFor(model => model.Reparto.NomeReparto)
+                </dd>
+
+                <dt class="my-1">
+                    Data Invio Farmaco
+                </dt>
+
+                <dd class="my-1">
+                    @Html.DisplayFor(model => model.DataInvioFarmaco)
+                </dd>
+
+            </dl>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p class="alert alert-danger w-50">Sei sicuro di voler eliminare il farmaco? l'eliminazione sarà definitiva</p>
+            <input type="submit" value="Cancella Farmaco" class="btn btn-danger mb-3" />
+        }
+    </div>
+</center>
+
+

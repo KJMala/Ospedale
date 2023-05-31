@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Ospedale.Models.Farmaco>
+
+@{
+    ViewBag.Title = "ListaFarmaci";
+}
+
+<h2 class="mt-5">Lista dei Farmaci dell'Ospedale</h2>
+
+<p>
+    @Html.ActionLink("Crea Nuovo Farmaco", "CreaFarmaco", new { area = "" }, new { @class = "btn bottone" })
+</p>
+
+
+<table class="table table-striped table-info">
+    <tr>
+        <th>
+            Nome Reparto
+        </th>
+        <th>
+            Nome Farmaco
+        </th>
+        <th>
+            Quantità
+        </th>
+        <th>
+            Data Invio Farmaco
+        </th>
+        <th/>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reparto.NomeReparto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeFarmaco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantià)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataInvioFarmaco)
+        </td>
+        <td>
+            <a class="btn btn-warning" href="/Farmacia/ModificaFarmaco/@item.IdFarmaco"><i class="fa-solid fa-edit"></i></a>
+            <a class="btn btn-danger" href="/Farmacia/CancellaFarmaco/@item.IdFarmaco"><i class="fa-solid fa-trash"></i></a>
+        </td>
+    </tr>
+}
+
+</table>
